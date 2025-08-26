@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2frseb0mgwbk"]
+
+[ext_resource type="Script" uid="uid://dm4jwg7xaoxov" path="res://data/scripts/intro_stage.gd" id="1_fdfl6"]
+[ext_resource type="PackedScene" uid="uid://cup5kn3d3pjw7" path="res://data/scenes/deciber_player_ship.tscn" id="2_b3nmi"]
+
+[node name="intro_stage" type="Node2D"]
+script = ExtResource("1_fdfl6")
+
+[node name="black_bg" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="black_bg"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="black_bg/MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="player_layer" type="CanvasLayer" parent="."]
+
+[node name="deciber_player_ship" parent="player_layer" instance=ExtResource("2_b3nmi")]
+position = Vector2(198, 134)
+
+[node name="enemy_layer" type="CanvasLayer" parent="."]
+
+[node name="player_proyectile_layer" type="CanvasLayer" parent="."]
+
+[node name="enemy_proyectile_layer" type="CanvasLayer" parent="."]

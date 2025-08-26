@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwm1sugteg2ta"]
+
+[ext_resource type="Script" uid="uid://u0wh7w3jtyqm" path="res://data/scripts/simple_trail.gd" id="1_xhj3e"]
+
+[node name="simple_trail" type="Line2D"]
+top_level = true
+script = ExtResource("1_xhj3e")
+trail_width = 2.0
+delete_delay = 0.01

@@ -1,0 +1,121 @@
+[gd_scene load_steps=20 format=3 uid="uid://cup5kn3d3pjw7"]
+
+[ext_resource type="Texture2D" uid="uid://cfj835sr36akd" path="res://assets/game_sprites/ships/deciber/body_neutral_t1/deciber_body_neutral_t1_1.png" id="1_pyehf"]
+[ext_resource type="Script" uid="uid://bugn3pfuasly1" path="res://data/scripts/deciber_player_ship.gd" id="1_wccda"]
+[ext_resource type="Texture2D" uid="uid://cjhywa0lc8s5m" path="res://assets/game_sprites/ships/deciber/body_neutral_t1/deciber_body_neutral_t1_2.png" id="2_wccda"]
+[ext_resource type="Texture2D" uid="uid://cqkjrih862t4" path="res://assets/game_sprites/ships/deciber/body_neutral_t1/deciber_body_neutral_t1_3.png" id="3_or3gq"]
+[ext_resource type="Texture2D" uid="uid://dwq57irwfi6ug" path="res://assets/game_sprites/ships/deciber/window_neutral_t1/deciber_window_neutral_t1.png" id="4_742dl"]
+[ext_resource type="Texture2D" uid="uid://vwqs3ccu1pae" path="res://assets/game_sprites/ships/deciber/window_neutral_t1/deciber_window_neutral_t10.png" id="5_8n3ed"]
+[ext_resource type="Texture2D" uid="uid://ds7oe6hl1p0tg" path="res://assets/game_sprites/ships/deciber/window_neutral_t1/deciber_window_neutral_t11.png" id="6_ejnan"]
+[ext_resource type="Texture2D" uid="uid://bsntclrqp5qqv" path="res://assets/game_sprites/ships/deciber/window_neutral_t1/deciber_window_neutral_t12.png" id="7_6vh6y"]
+[ext_resource type="Texture2D" uid="uid://bhgwqcudtulh5" path="res://assets/game_sprites/ships/deciber/window_neutral_t1/deciber_window_neutral_t13.png" id="8_eemhm"]
+[ext_resource type="Texture2D" uid="uid://dgra5lqd7u6t1" path="res://assets/game_sprites/ships/deciber/window_neutral_t1/deciber_window_neutral_t14.png" id="9_ux8xl"]
+[ext_resource type="Texture2D" uid="uid://daoo6kod3ctk2" path="res://assets/game_sprites/ships/deciber/window_neutral_t1/deciber_window_neutral_t15.png" id="10_cdfyo"]
+[ext_resource type="Texture2D" uid="uid://bdtu5hniqodvo" path="res://assets/game_sprites/ships/deciber/window_neutral_t1/deciber_window_neutral_t16.png" id="11_u81ln"]
+[ext_resource type="Texture2D" uid="uid://cqglu5aga7xwe" path="res://assets/game_sprites/ships/deciber/window_neutral_t1/deciber_window_neutral_t17.png" id="12_k7ctv"]
+[ext_resource type="Texture2D" uid="uid://diouky11lu288" path="res://assets/game_sprites/ships/deciber/window_neutral_t1/deciber_window_neutral_t18.png" id="13_p0exs"]
+[ext_resource type="Texture2D" uid="uid://dkht0wti68te1" path="res://assets/game_sprites/ships/deciber/window_neutral_t1/deciber_window_neutral_t19.png" id="14_gqdta"]
+[ext_resource type="PackedScene" uid="uid://iq38ad50aav0" path="res://data/scenes/weighted_tail_trail.tscn" id="16_or3gq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qi3d8"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("1_pyehf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wccda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_or3gq")
+}],
+"loop": true,
+"name": &"idle_neutral_t1",
+"speed": 8.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l4tfb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_742dl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8n3ed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ejnan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6vh6y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_eemhm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ux8xl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_cdfyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_u81ln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_k7ctv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_p0exs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gqdta")
+}],
+"loop": false,
+"name": &"window_neutral_t1",
+"speed": 15.5
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wccda"]
+radius = 6.0
+height = 40.0
+
+[node name="deciber_player_ship" type="CharacterBody2D" node_paths=PackedStringArray("weighted_tail_trail_1", "weighted_tail_trail_2", "weighted_tail_trail_3")]
+script = ExtResource("1_wccda")
+weighted_tail_trail_1 = NodePath("weighted_genpoint/weighted_tail_trail")
+weighted_tail_trail_2 = NodePath("weighted_genpoint2/weighted_tail_trail2")
+weighted_tail_trail_3 = NodePath("weighted_genpoint3/weighted_tail_trail3")
+
+[node name="player_ship_body" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qi3d8")
+animation = &"idle_neutral_t1"
+autoplay = "idle_neutral_t1"
+
+[node name="player_ship_window" type="AnimatedSprite2D" parent="."]
+position = Vector2(11.5, -2)
+sprite_frames = SubResource("SpriteFrames_l4tfb")
+animation = &"window_neutral_t1"
+
+[node name="player_ship_coll" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_wccda")
+
+[node name="weighted_genpoint" type="Node2D" parent="."]
+position = Vector2(-18, -6)
+rotation = -0.698132
+
+[node name="weighted_tail_trail" parent="weighted_genpoint" instance=ExtResource("16_or3gq")]
+z_index = -2
+
+[node name="weighted_genpoint2" type="Node2D" parent="."]
+position = Vector2(-22, 0)
+
+[node name="weighted_tail_trail2" parent="weighted_genpoint2" instance=ExtResource("16_or3gq")]
+z_index = -2
+
+[node name="weighted_genpoint3" type="Node2D" parent="."]
+position = Vector2(-20, 4)
+rotation = 0.0872665
+
+[node name="weighted_tail_trail3" parent="weighted_genpoint3" instance=ExtResource("16_or3gq")]
+z_index = -2

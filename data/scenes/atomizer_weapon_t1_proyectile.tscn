@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://mojqotmsw152"]
+
+[ext_resource type="Script" uid="uid://b51epjg0v7mnw" path="res://data/scripts/atomizer_weapon_t1_proyectile.gd" id="1_c6558"]
+[ext_resource type="Texture2D" uid="uid://dsr5l7pdh55uq" path="res://assets/game_sprites/ships/deciber/atom_weapon_neutral_t1/atom_weapon_proyectile_t1/atom_weapon_proyectile_t1_1.png" id="2_7xgab"]
+[ext_resource type="Texture2D" uid="uid://bhjc2r8w8tyi4" path="res://assets/game_sprites/ships/deciber/atom_weapon_neutral_t1/atom_weapon_proyectile_t1/atom_weapon_proyectile_t1_2.png" id="3_aoy0q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nwnsj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7xgab")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_aoy0q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6558"]
+size = Vector2(20, 4)
+
+[node name="atomizer_weapon_t1_proyectile" type="Area2D"]
+script = ExtResource("1_c6558")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nwnsj")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c6558")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
